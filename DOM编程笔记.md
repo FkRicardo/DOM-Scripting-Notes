@@ -80,4 +80,21 @@
 第七章
 ------------
 
-hahaha
+`document.write()`
+
+`innerHTML`
+
+`createElement`
+
+`createTextNode`
+
+`appendChild`
+
+`insertBefore`
+
+`insertAfter`
+
+==创建节点对象后将这些DocumentFragment对象插入文档的节点树==
+
+第八章
+-----------
