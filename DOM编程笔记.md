@@ -2,7 +2,7 @@
 ---------------
 `getElementById`
 
-`getElementsByTagName(节点标签名)`返回数组
+`getElementsByTagName(节点标签名)`返回数组 如果使用通配符==*==，则返回所有 ==元素节点==
 
 `getElementsByClassName(节点class名)`返回数组
 
@@ -98,3 +98,24 @@
 
 第八章
 -----------
+==缩略语列表==  文档中的缩略语`<abbr title="w  w  w">W3C</abbr>`
+
+```
+<dl>
+	<dt>W3C</dt>
+	<dd>lalala</dd>
+</dl>
+```
+
+为每段文献节选生成一个==文献来源链接==：
+文献一般加上 cite="http://www.w3.org/DOM/" 属性
+
+```javascript
+	<sup>		//sup显示 上标 的效果
+		<a>source</a>
+	</sup>	
+```
+
+将文档所支持的快捷键显示为一份==快捷键清单==：
+可以为个别标签添加 accesskey="1" 属性
+
