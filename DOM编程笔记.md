@@ -119,3 +119,64 @@
 将文档所支持的快捷键显示为一份==快捷键清单==：
 可以为个别标签添加 accesskey="1" 属性
 
+第九章（DOM）
+---------------
+
+通过==style==属性改变文档样式
+
+- 根据元素在节点树里面的位置设置他们的样式
+（通过子元素  父元素 查找对应元素，并设定样式）
+- 遍历一个节点集合设置有关元素的样式
+（通过==*==可以得到所有 ==元素文本==）
+- 在事件发生时设置有关元素的样式
+（事件对象）
+
+第十章（动画）
+---------
+"动画"：随时间变化而改变某个元素在浏览器窗口里的显示位置
+
+```javascript
+	function moveElement (elementID, final_x, final_y, interval) {
+		//检查是否支持方法
+		if (!document.getElementById) return false;
+		if (!document.getElementById(elementID)) return false;
+
+		var elem = document.getElementById(elementID);
+		if (elem.movement) {			//防止来回移动，在下一下移动触发时清除movement
+			clearTimeout(elem.movement);
+		};
+		if (!elem.style.left) {
+			elem.style.left = "0px";
+		}
+		if (!elem.style.top) {
+			elem.style.top = "0px";
+		};
+		var xpos = parseInt(elem.style.left);
+		var ypos = parseInt(elem.style.top);
+		if (xpos == final_x && ypos == final_y) {
+			return true;
+		}
+
+		var dlist = 0;
+		if (xpos < final_x) {
+			dlist = Math.ceil((final_x-xpos)/10);
+			xpos += dlist;
+		}
+		if (xpos > final_x) {
+			dlist = Math.ceil((xpos-final_x)/10);
+			xpos -= dlist;
+		}
+		if (ypos < final_y) {
+			dlist = Math.ceil((final_y-ypos)/10);
+			ypos += dlist;
+		}
+		if (ypos > final_y) {
+			dlist = Math.ceil((ypos-final_y)/10);
+			ypos -= dlist;
+		}
+		elem.style.left = xpos + "px";
+		elem.style.top = ypos + "px";
+		var repeat = "moveElement('" + elementID + "'," + final_x +","+ final_y+"," + interval + ")";	//参数为字符串，而且加括号
+		elem.movement = setTimeout(repeat, interval);	//将setTime作为属性赋给elem，然后清除的时候可以清除属性，防止作为全局变量时无法定时清除，作为局部变量时不能全局
+	}
+```
